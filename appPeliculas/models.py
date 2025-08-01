@@ -1,7 +1,8 @@
+import os
 from django.db import models
+from django.dispatch import receiver
 
 # Create your models here.
-from django.db import models
 
 class Genero(models.Model):
     nombre = models.CharField(max_length=50)
@@ -17,3 +18,9 @@ class Pelicula(models.Model):
 
     def __str__(self):
         return self.titulo
+
+def delete(self, *args, **kwargs):
+        # Borra la imagen del sistema de archivos
+        if self.imagen and os.path.isfile(self.imagen.path):
+            os.remove(self.imagen.path)
+        super().delete(*args, **kwargs)
