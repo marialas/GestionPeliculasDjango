@@ -1,23 +1,11 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Inicio</title>
-    <!-- Bootstrap CSS desde CDN -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">-->
-    <!-- Tu archivo personalizado -->
-    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
-</head>
-<body>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Bienvenido</h1>
-        <div class="d-flex justify-content-center gap-3">
-            <a href="{% url 'agregar_genero' %}" class="btn btn-primary">Agregar Género</a>
-            <a href="{% url 'agregar_pelicula' %}" class="btn btn-success">Agregar Película</a>
-            <a href="{% url 'listar_peliculas' %}" class="btn btn-info">Listar Películas</a>
-        </div>
-    </div>
-</body>
-</html>
+{% extends 'base.html' %}
 
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <a class="btn btn-primary" href="{% url 'agregar_genero' %}">Agregar Género</a>
+    <a class="btn btn-success" href="{% url 'agregar_pelicula' %}">Agregar Película</a>
+    <a class="btn btn-info" href="{% url 'listar_peliculas' %}">Listar Películas</a>
+</div>
+{% endblock %}

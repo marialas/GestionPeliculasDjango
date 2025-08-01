@@ -11,7 +11,7 @@ def agregar_genero(request):
         nombre = request.POST['nombre']
         Genero.objects.create(nombre=nombre)
         return redirect('inicio')
-    return render(request, 'agregarGenero.html')
+    return render(request, 'agregarGenero.html', {'mensaje': 'Género agregado exitosamente'})
 
 def agregar_pelicula(request):
     generos = Genero.objects.all()
@@ -23,7 +23,7 @@ def agregar_pelicula(request):
         genero = Genero.objects.get(id=genero_id)
         Pelicula.objects.create(titulo=titulo, descripcion=descripcion, imagen=imagen, genero=genero)
         return redirect('listar_peliculas')
-    return render(request, 'agregarPelicula.html', {'generos': generos})
+    return render(request, 'agregarPelicula.html', {'generos': generos, 'mensaje': 'Película agregada exitosamente'})
 
 def listar_peliculas(request):
     peliculas = Pelicula.objects.all()
